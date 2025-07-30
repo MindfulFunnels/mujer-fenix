@@ -1,5 +1,5 @@
 {
-  "name": "template-landing",
+  "name": "mujer-fenix",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.12.6"
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/vercel": "^8.0.4",
+    "@libsql/client": "^0.15.10",
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.12.1",
+    "axios": "^1.11.0",
+    "flag-icons": "^7.5.0",
+    "fs-extra": "^11.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.11"
   }
 }

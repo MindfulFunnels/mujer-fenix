@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  phrase?: string;
+  description?: string;
+  achievements?: string[];
+  texts?: string[];
+  id: string;
+}
+
+const { title, description, texts, achievements, phrase, id } = Astro.props;
+---
+
+<div
+  class='items-center justify-center w-full min-h-screen grid-cols-2 px-4 py-24 md:grid sm:px-6 lg:px-8'
+  id={id}
+>
+  <div class='relative z-10 px-4 mx-auto sm:px-6 lg:px-8'>
+    <div class='flex flex-col items-center gap-2 text-center'>
+      <h2 class='font-bold gradient-text'>
+        {title}
+      </h2>
+      {description && <p class='mb-10 text-center subtitle'>{description}</p>}
+      {texts?.map((text) => <h4 class='mb-4 text-center '>{text}</h4>)}
+    </div>
+  </div>
+  <div class='flex items-center'>
+    <img
+      src='/about.webp'
+      alt='About section background'
+      class='absolute justify-start object-contain w-auto pointer-events-none max-h-[600px] image-hero opacity-60 md:mt-2 mt-48'
+      style='mask-image: linear-gradient(blue 20%, transparent );'
+    />
+  </div>
+</div>

@@ -1,0 +1,68 @@
+---
+import RegisterBox from "./RegisterBox";
+interface Props {
+  title?: string;
+  id: string;
+  description?: string;
+  benefitsTitle?: string;
+  benefits?: string[];
+  registerTitle?: string;
+  registerNamePlaceholder?: string;
+  registerEmailPlaceholder?: string;
+  registerButtonText?: string;
+  registerErrorEmpty?: string;
+  registerErrorEmail?: string;
+  registerErrorServer?: string;
+  registerSuccess?: string;
+  registerSecureMessage?: string;
+  text?: string;
+}
+
+const {
+  title,
+  id,
+  description,
+  benefitsTitle,
+  benefits,
+  text,
+  registerTitle,
+  registerNamePlaceholder,
+  registerEmailPlaceholder,
+  registerButtonText,
+  registerErrorEmpty,
+  registerErrorEmail,
+  registerErrorServer,
+  registerSuccess,
+  registerSecureMessage,
+} = Astro.props;
+---
+
+<div
+  id={id}
+  class='z-10 flex flex-col items-center gap-4 px-4 py-24 text-center div-reveal sm:px-6 lg:px-8'
+>
+  <h2 class='font-bold gradient-text'>
+    {title}
+  </h2>
+
+  <h4 class='subtitle'>
+    {description}
+  </h4>
+
+  {text && <p>{text}</p>}
+
+  <div class='w-full'>
+    <RegisterBox
+      client:load
+      title={registerTitle}
+      namePlaceholder={registerNamePlaceholder}
+      emailPlaceholder={registerEmailPlaceholder}
+      buttonText={registerButtonText}
+      errorEmpty={registerErrorEmpty}
+      errorEmail={registerErrorEmail}
+      errorServer={registerErrorServer}
+      success={registerSuccess}
+      secureMessage={registerSecureMessage}
+    />
+  </div>
+</div>

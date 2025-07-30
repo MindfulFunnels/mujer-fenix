@@ -1,0 +1,75 @@
+<div
+  x-data="{ 
+    activeIndex: 0,
+    iframes: [
+      'https://www.youtube.com/embed/QItp6HQJJ7o',
+      'https://www.youtube.com/embed/DUOnDyuKdsM',
+      'https://www.youtube.com/embed/uaF6P-5XBV4',
+      'https://www.youtube.com/embed/tNi7_O0P9Gw',
+      'https://www.youtube.com/embed/U6OKXfjUoYA',
+      'https://www.youtube.com/embed/nMfezyLwuSY',
+      'https://www.youtube.com/embed/K_1a3RTdbHg',
+      'https://www.youtube.com/embed/1eIi01Gfa1g'
+    ]
+  }"
+>
+  <div class='relative flex items-center justify-center'>
+    <!-- Botón anterior -->
+    <!-- <button
+        class='bg-blue-400 text-white px-3 py-2 rounded shadow absolute left-0 z-10'
+        @click='activeIndex = (activeIndex - 1 + iframes.length) % iframes.length'
+      >
+        ◀
+      </button> -->
+
+    <!-- Video -->
+    <!-- <template x-for="(iframe, index) in iframes" :key="index">
+        <template x-if="activeIndex === index">
+          <div class="carousel-item mx-auto">
+            <div class="video-wrapper">
+              <iframe
+                :src="iframe"
+                :title="'Testimonial Video ' + (index + 1)"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="video-iframe"></iframe>
+            </div>
+          </div>
+        </template>
+      </template> -->
+
+    <!-- Botón siguiente -->
+    <!-- <button
+        class='bg-blue-400 text-white px-3 py-2 rounded shadow absolute right-0 z-10'
+        @click='activeIndex = (activeIndex + 1) % iframes.length'
+      >
+        ▶
+      </button> -->
+  </div>
+</div>
+<style>
+  [x-cloak] {
+    display: none;
+  }
+
+  .carousel-item {
+    width: 60%;
+    max-width: 300px;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 177.78%; /* 16:9 ratio */
+  }
+
+  .video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>

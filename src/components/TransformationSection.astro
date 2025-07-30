@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  benefits?: string[];
+  id: string;
+}
+
+const { title, description, benefits, id } = Astro.props;
+---
+
+<div
+  class='flex flex-col gap-8 px-4 py-24 text-left md:text-center div-reveal'
+  id={id}
+>
+  <h2 class='font-bold text-center'>
+    {title}
+  </h2>
+  {description && <p class='subtitle'>{description}</p>}
+
+  <div class='grid gap-8 md:grid-cols-2'>
+    {
+      benefits?.map((benefit) => (
+        <div class='group flex justify-center items-center gap-4 p-4 rounded-lg bg-[var(--color-primary)] shadow-lg transition-all duration-300 hover:scale-105 '>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            id='Star--Streamline-Guidance-Free'
+            height='24'
+            width='24'
+            stroke='currentColor'
+            class='min-w-[24px] mt-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12'
+          >
+            <desc>Star Streamline Icon: https://streamlinehq.com</desc>
+            <path
+              d='M22.5 9.614h-1.93a8 8 0 0 1 -7.712 -5.871l-0.62 -2.243h-0.477l-0.619 2.243a8 8 0 0 1 -7.711 5.87H1.5V10l1.656 1.143a8 8 0 0 1 3.1 8.946L5.51 22.5H6l0.904 -0.747a8 8 0 0 1 10.192 0L18 22.5h0.49l-0.746 -2.41a8 8 0 0 1 3.1 -8.947L22.5 10v-0.386Z'
+              stroke-width='1'
+            />
+          </svg>
+          <h4 class='text-base md:text-lg'>{benefit}</h4>
+        </div>
+      ))
+    }
+  </div>
+</div>

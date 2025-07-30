@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  id: string;
+  videos: string[];
+  screenshots?: string[];
+  textTestimonials?: string[];
+}
+
+const { title, id, videos, screenshots, textTestimonials } = Astro.props;
+
+import ImageCarousel from "../components/SwiperComponentPhoto";
+---
+
+<section
+  id={id}
+  class='flex flex-col items-center gap-8 px-6 py-24 mx-auto text-center sm:px-6 lg:px-8'
+>
+  <h2 class='mb-10 text-3xl font-bold gradient-text drop-shadow-lg'>
+    {title}
+  </h2>
+
+  {
+    videos.map((video) => (
+      <div class='w-full mx-auto'>
+        <div class='relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden shadow-lg'>
+          <iframe
+            class='absolute top-0 left-0 w-full h-full'
+            src={video}
+            title='YouTube video player'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            referrerpolicy='strict-origin-when-cross-origin'
+            allowfullscreen
+          />
+        </div>
+      </div>
+    ))
+  }
+
+  {
+    screenshots && screenshots.length > 0 && (
+      <ImageCarousel images={screenshots} client:load />
+    )
+  }
+
+  {
+    textTestimonials && textTestimonials.length > 0 && (
+      <div class='flex flex-col gap-4 px-4 py-8 mx-auto max-w-2xl'>
+        {textTestimonials.map((testimonial) => (
+          <blockquote class='text-lg italic '>💬{testimonial}</blockquote>
+        ))}
+      </div>
+    )
+  }
+</section>

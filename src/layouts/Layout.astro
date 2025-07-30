@@ -1,22 +1,86 @@
+---
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  hideNav?: boolean;
+}
+
+const titleLandingPage = "Mujer Fénix"; // CAMBIAR POR EL NOMBRE DE LA LANDING
+
+const copys = {
+  nav: {
+    navItems: [
+      { label: "Evento", href: "#live-event" },
+      { label: "Aprenderás", href: "#you-will-learn" },
+      { label: "Conocer más", href: "#learn-more" },
+      { label: "Para quién es", href: "#who-is-it-for" },
+      { label: "Testimonios", href: "#testimonials" },
+      { label: "Quién soy", href: "#about" },
+    ],
+    ctaLabel: "Unirme",
+    ctaHref: "#register",
+  },
+};
+
+const { title = titleLandingPage, hideNav = false } = Astro.props;
+
+const copyright = `© 2025 Made by <span class='font-extrabold'>${titleLandingPage}</span>`;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' href='/favicon.png' />
+    <meta name='generator' content={Astro.generator} />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+    <title>{title}</title>
+    <script
+      src='https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js'
+      defer></script>
+    <!-- HTML Meta Tags -->
+    <title>{title}</title>
+    <meta name='description' content='' />
+
+    <!-- Facebook Meta Tags -->
+    <meta property='og:url' content='https://{title}.vercel.app/' />
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content='{title}' />
+    <meta property='og:description' content='' />
+    <meta
+      property='og:image'
+      content='https://opengraph.b-cdn.net/production/images/788d6f6f-28f8-4cdd-a75e-a172f77fb308.png?token=Nz4HXiebizAo80V7zskPajk1xdBcd6CB40vruyDDnsk&height=630&width=1200&expires=33289374245'
+    />
+
+    <!-- Twitter Meta Tags -->
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta property='twitter:domain' content='{title}.vercel.app' />
+    <meta property='twitter:url' content='https://{title}.vercel.app/' />
+    <meta name='twitter:title' content='{title}' />
+    <meta name='twitter:description' content='' />
+    <meta
+      name='twitter:image'
+      content='https://opengraph.b-cdn.net/production/images/788d6f6f-28f8-4cdd-a75e-a172f77fb308.png?token=Nz4HXiebizAo80V7zskPajk1xdBcd6CB40vruyDDnsk&height=630&width=1200&expires=33289374245'
+    />
+
+    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+  </head>
+  <body>
+    <Nav {...copys.nav} />
+    <main class='flex flex-col items-center justify-center mx-auto max-w-7xl'>
+      <slot />
+    </main>
+    <Footer copyright={copyright} />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
 </style>

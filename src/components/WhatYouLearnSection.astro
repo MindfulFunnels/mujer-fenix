@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  bullets?: string[];
+  id: string;
+}
+
+const { title, description, bullets, id } = Astro.props;
+---
+
+<div class='flex flex-col gap-8 px-4 py-24 text-center div-reveal' id={id}>
+  <h2 class='font-bold'>
+    {title}
+  </h2>
+
+  {description && <p class='subtitle'>{description}</p>}
+
+  <div class='grid gap-8 md:grid-cols-2 text-left md:text-center'>
+    {
+      bullets?.map((bullet) => (
+        <div class='flex gap-4 p-4 rounded-lg bg-[var(--color-primary)] shadow-lg transition-all duration-300 hover:scale-105 justify-center items-center'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='-1.125 -1.125 24 24'
+            stroke='currentColor'
+            aria-hidden='true'
+            id='Academic-Cap--Streamline-Heroicons-Outline'
+            height='24'
+            width='24'
+            class='min-w-[24px] mt-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12'
+          >
+            <desc>Academic Cap Streamline Icon: https://streamlinehq.com</desc>
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              d='M3.8606249999999998 9.195718750000001a54.7719375 54.7719375 0 0 0 -0.44496874999999997 5.7519687500000005A44.061875 44.061875 0 0 1 10.875 18.94425a44.061875 44.061875 0 0 1 7.460249999999999 -3.9965625 54.791875 54.791875 0 0 0 -0.44496874999999997 -5.7519687500000005m-14.030562499999998 0a45.888875000000006 45.888875000000006 0 0 0 -2.4088125 -0.7367812499999999A54.2898125 54.2898125 0 0 1 10.875 3.16553125a54.28709375 54.28709375 0 0 1 9.424093749999999 5.2924999999999995c-0.812 0.22475 -1.61584375 0.47125 -2.4088125 0.7376874999999999m-14.030562499999998 0A45.96228125 45.96228125 0 0 1 10.875 12.224406250000001a45.9486875 45.9486875 0 0 1 7.014375 -3.0286875M6.1171875 13.59375a0.6796875 0.6796875 0 1 0 0 -1.359375 0.6796875 0.6796875 0 0 0 0 1.359375Zm0 0v-3.3304687499999996A50.1863125 50.1863125 0 0 1 10.875 7.651468749999999m-6.35009375 10.467187500000001A5.4202812499999995 5.4202812499999995 0 0 0 6.1171875 14.2734375v-1.359375'
+              stroke-width='2.25'
+            />
+          </svg>
+          <h4 class='text-base md:text-lg'>{bullet}</h4>
+        </div>
+      ))
+    }
+  </div>
+</div>

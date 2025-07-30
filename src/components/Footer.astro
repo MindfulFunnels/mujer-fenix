@@ -1,0 +1,12 @@
+---
+interface Props {
+  copyright: string;
+}
+const { copyright } = Astro.props;
+---
+
+<footer class='mt-8 py-10 bg-[color:var(--color-footer)] text-white'>
+  <div class='flex justify-center text-center'>
+    <p set:html={copyright} />
+  </div>
+</footer>

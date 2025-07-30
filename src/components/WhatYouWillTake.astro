@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  benefitsTitle?: string;
+  benefits?: string[];
+}
+
+const { title, benefitsTitle, benefits } = Astro.props;
+---
+
+<div class='w-full md:w-1/2 text-center'>
+  <h3 class='font-bold mb-6' style='color: var(--midnight-blue)'>
+    {benefitsTitle}
+  </h3>
+  <ul
+    class='space-y-4 text-midnight-blue md:text-left md:items-start flex flex-col items-center text-center'
+  >
+    {
+      benefits?.map((benefit) => (
+        <li class='flex items-start gap-3'>
+          <svg
+            class='w-6 h-6 text-true-blue flex-shrink-0 mt-1'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+              d='M5 13l4 4L19 7'
+            />
+          </svg>
+          <span>{benefit}</span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

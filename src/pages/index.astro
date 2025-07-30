@@ -1,11 +1,174 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TransformationSection from "../components/TransformationSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+import ItsForYouIf from "../components/ItsForYouIf.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
+import FinalCTASection from "../components/FinalCTASection.astro";
+import LiveEventSection from "../components/LiveEventSection.astro";
+import CTAButton from "../components/CTAButton.astro";
+import WhatYouLearnSection from "../components/WhatYouLearnSection.astro";
+import { date } from "astro:schema";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Copys centralizados para toda la landing
+const copys = {
+  hero: {
+    title: "Mujer Fénix",
+    questions: [
+      "¿Sos de las que hizo terapia, cursos y dieta… pero seguís sintiéndote rota frente al espejo?",
+      "¿Estás cansada de luchar con tu cuerpo, de intentar controlarte para no “caer”, de vivir con culpa después de comer?",
+    ],
+    subtitle:
+      "Jime Frontera, terapeuta emocional con +430.000 seguidoras en Instagram, te guía en una experiencia transformadora para dejar atrás la exigencia y reconectar con tu cuerpo desde un lugar de amor, conciencia y libertad.",
+    text: "Esta clase no es sobre cómo tener “más fuerza de voluntad” o “comer mejor”. Es sobre soltar la guerra. Volver a confiar. Volver a sentirte segura en tu piel.",
+    date: "Viernes 30 de agosto ",
+    ctaText: "Reservar mi lugar en la clase gratuita",
+    ctaLink: "#register",
+  },
+
+  finalCTA: {
+    title:
+      "El primer paso para salir del loop de la culpa, la autoexigencia y el control.",
+    description:
+      "En esta clase vas a descubrir por qué, aunque hayas trabajado mucho en vos, todavía te pesa mirarte al espejo, comés con culpa o sentís que tu cuerpo es un enemigo.",
+    text: "Y más importante aún, vas a entender cómo sanar esa relación de raíz: no desde el control mental ni la dieta disfrazada, sino desde la conexión emocional profunda y la reconexión con tu verdad.",
+  },
+
+  liveEvent: {
+    title: "Viernes 30 de agosto",
+    subtitle: "Clase gratuita en vivo",
+    dateLabel: "Fecha",
+    date: "Viernes 30 de agosto",
+    timeLabel: "Horario",
+    importantLabel: "⚠️ Importante",
+    importantText:
+      "La Clase no se graba. Es una experiencia única, solo en vivo.",
+    times: [
+      { country: "España", time: "00:00h", flag: "fi fi-es" },
+      { country: "Argentina", time: "19:00h", flag: "fi fi-ar" },
+      { country: "México", time: "16:00h", flag: "fi fi-mx" },
+      { country: "Miami", time: "18:00h", flag: "fi fi-us" },
+      { country: "Colombia", time: "17:00h", flag: "fi fi-co" },
+      { country: "Chile", time: "18:00h", flag: "fi fi-cl" },
+      { country: "Perú", time: "17:00h", flag: "fi fi-pe" },
+      { country: "Venezuela", time: "18:00h", flag: "fi fi-ve" },
+    ],
+  },
+
+  whatYouLearn: {
+    title: "¿Qué vas a descubrir en esta clase?",
+    description:
+      "Una experiencia que no se queda en la teoría. Vas a integrar una nueva forma de relacionarte con vos.",
+    bullets: [
+      "Los 3 errores invisibles que seguís repitiendo con tu cuerpo (aunque hayas hecho terapia y mil procesos)",
+      "Por qué seguir intentando “comer bien” o “tener fuerza de voluntad” te mantiene en guerra",
+      "Cómo detectar la raíz emocional que está detrás de tu relación con la comida",
+      "Qué significa sanar desde la conciencia y no desde la exigencia",
+      "El camino para volver a sentir paz, disfrute y libertad con vos misma",
+    ],
+  },
+
+  transformation: {
+    title: "¿Qué te vas a llevar de esta experiencia?",
+    benefits: [
+      "Una nueva comprensión sobre tu historia corporal y emocional",
+      "Un primer paso real para dejar de luchar y empezar a habitarte con amor",
+      "Herramientas concretas para volver a confiar en vos y en tu cuerpo",
+      "Una visión integradora que une lo emocional, lo físico y lo espiritual",
+      "Acceso anticipado al proceso de transformación completo (con beneficios exclusivos)",
+    ],
+  },
+
+  itsForYouIf: {
+    title: "Esta clase es para vos si…",
+    steps: [
+      "Sentís que hiciste mil cosas, pero seguís atrapada en el mismo ciclo",
+      "Vivís con ansiedad o culpa al comer, o estás desconectada de tu cuerpo",
+      "Sos muy autoexigente y te cuesta soltar el control",
+      "Sos sensible, espiritual, pero no lográs sentir verdadera paz",
+      "Querés una forma nueva de sanar, más amorosa, profunda y real",
+    ],
+  },
+
+  testimonials: {
+    title: "Lo que dicen quienes ya trabajaron con Jime:",
+    videos: [
+      "https://www.youtube.com/embed/",
+      "https://www.youtube.com/embed/",
+      "https://www.youtube.com/embed/",
+      "https://www.youtube.com/embed/",
+      "https://www.youtube.com/embed/",
+    ],
+
+    screenshots: [
+      "https://i.ibb.co/.jpg",
+      "https://i.ibb.co/.jpg",
+      "https://i.ibb.co/.jpg",
+    ],
+
+    textTestimonials: [
+      "“Nunca había sentido tanta paz con mi cuerpo. Jime me ayudó a ver todo desde otro lugar.”",
+      "“La clase fue un antes y un después. Me sentí acompañada y comprendida.”",
+      "“Gracias a Jime entendí que sanar no es corregirme, es volver a confiar en mi historia.”",
+    ],
+  },
+
+  about: {
+    title: "Sobre Jime",
+    texts: [
+      "Jime Frontera es terapeuta emocional y guía de procesos de transformación con una comunidad de +430.000 mujeres.",
+      "Su enfoque une lo emocional, lo espiritual y lo corporal en un camino de regreso al amor propio.",
+      "“Sanar no es corregirte. Es volver a confiar en tu cuerpo, en tu historia y en tu sabiduría.”",
+    ],
+  },
+
+  registerBox: {
+    title: "Inicia tu Transformación",
+    namePlaceholder: "Tu nombre y apellido*",
+    emailPlaceholder: "Tu email*",
+    buttonText: "Registrarme",
+    errorEmpty: "Por favor, rellena todos los campos",
+    errorEmail: "Por favor, ingresa un email válido",
+    errorServer: "Hubo un error al procesar tu solicitud. Intenta nuevamente.",
+    success: "¡Registro exitoso! Te redirigiremos en breve...",
+    secureMessage:
+      "Tus datos están seguros. Solo los usaremos para enviarte información sobre la masterclass.",
+  },
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout hideNav={false}>
+  <main class='flex flex-col items-center justify-center mx-auto max-w-7xl'>
+    <Hero id='hero' {...copys.hero} />
+
+    <FinalCTASection id='register' {...copys.finalCTA} />
+
+    <LiveEventSection id='live-event' {...copys.liveEvent} />
+
+    <CTAButton href='#register' label='👉 Quiero mi lugar en la clase' />
+
+    <WhatYouLearnSection id='you-will-learn' {...copys.whatYouLearn} />
+
+    <CTAButton href='#register' label='Quiero vivir esta transformación' />
+
+    <TransformationSection id='learn-more' {...copys.transformation} />
+
+    <CTAButton href='#register' label='Reservar mi lugar en la masterclass' />
+
+    <ItsForYouIf id='who-is-it-for' {...copys.itsForYouIf} />
+
+    <CTAButton
+      href='#register'
+      label='Reservar mi lugar y entender qué me está trabando'
+    />
+
+    <TestimonialsSection id='testimonials' {...copys.testimonials} />
+
+    <CTAButton href='#register' label='Quiero vivir esta transformación' />
+
+    <AboutSection id='about' {...copys.about} />
+
+    <CTAButton href='#register' label='Anotarme ahora' />
+  </main>
 </Layout>

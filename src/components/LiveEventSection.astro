@@ -1,0 +1,68 @@
+---
+interface EventTime {
+  country: string;
+  time: string;
+  flag: string;
+}
+interface Props {
+  title: string;
+  subtitle?: string;
+  id: string;
+
+  dateLabel: string;
+  date: string;
+  timeLabel: string;
+  times: EventTime[];
+  importantLabel: string;
+  importantText?: string;
+}
+const {
+  title,
+  subtitle,
+  id,
+  dateLabel,
+  date,
+  timeLabel,
+  times,
+  importantLabel,
+  importantText,
+} = Astro.props;
+import EventCard from "./EventCard.astro";
+---
+
+<div class='flex flex-col gap-8 py-24 text-center md:gap-10 div-reveal' id={id}>
+  <div>
+    <h2 class='font-bold drop-shadow-lg gradient-text'>
+      {title}
+    </h2>
+    <h3>
+      {subtitle}
+    </h3>
+  </div>
+  <!-- Horarios -->
+  <div class='text-center'>
+    <h2>
+      {timeLabel}
+    </h2>
+    <div
+      class='grid grid-cols-2 mt-4 space-y-3 md:grid-cols-3 md:gap-6 md:space-y-0'
+    >
+      {
+        times.map((t) => (
+          <div class='flex items-center justify-center gap-1 '>
+            <h4 class={`${t.flag} w-6 h-4 rounded shadow-sm`} />
+            <h4 class='text-xl font-bold md:text-2xl'>{t.time}</h4>
+            <h4 class='text-base md:text-lg text-[--color-secondary]'>
+              {t.country}
+            </h4>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class='text-center'>
+    <h3 class='animate-pulse'>{importantLabel}</h3>
+    <p>{importantText}</p>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+---
+// Componente Astro
+interface Props {
+  title: string;
+  id: string;
+  description?: string;
+  steps: string[];
+  inclusions?: string[];
+}
+
+const { title, description, steps, inclusions, id } = Astro.props;
+---
+
+<div class='px-4 py-24 mx-auto div-reveal sm:px-6 lg:px-8' id={id}>
+  <h2 class='mb-10 font-bold text-center gradient-text'>{title}</h2>
+
+  {description && <p class='mb-10 subtitle'>{description}</p>}
+
+  <div class='flex flex-col gap-8'>
+    {
+      steps.map((step, index) => (
+        <div class='flex gap-4 p-6 shadow-lg rounded-lg bg-[var(--color-primary)] transition-all duration-300 hover:scale-105 '>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            height='24'
+            width='24'
+            stroke='currentColor'
+            class='min-w-[24px] mt-1'
+          >
+            <path
+              stroke='currentColor'
+              fill-rule='evenodd'
+              clip-rule='evenodd'
+              stroke-width='1.7143'
+              d='M6.68 2.93C8.44 2.73 10.21 2.57 12 2.57s3.56 0.16 5.32 0.36c1.97 0.22 3.56 1.81 3.77 3.78.2 1.79.35 3.55.35 5.29s-.15 3.54-.34 5.29c-.21 1.97-1.8 3.56-3.77 3.78-1.76.2-3.53.36-5.32.36s-3.56-.16-5.32-.36c-1.97-.22-3.56-1.81-3.77-3.78C2.72 15.54 2.57 13.78 2.57 12s.15-3.54.34-5.29c.21-1.97 1.8-3.56 3.77-3.78ZM12 .43c-1.91 0-3.78.17-5.56.37C3.48 1.13 1.09 3.51.78 6.48.59 8.25.43 10.1.43 12c0 1.9.16 3.75.35 5.52.32 2.97 2.7 5.35 5.67 5.68 1.78.2 3.64.37 5.55.37s3.78-.17 5.56-.37c2.97-.33 5.35-2.71 5.67-5.68.19-1.77.35-3.62.35-5.52 0-1.9-.16-3.75-.35-5.52-.32-2.97-2.7-5.36-5.67-5.69C15.78.6 13.91.43 12.00.43Zm4.69 8.7c.53-.48.57-1.29.09-1.82-.48-.53-1.29-.57-1.82-.09-1.28 1.16-2.26 2.22-3.09 3.51-.52.82-.97 1.7-1.4 2.74l-1.37-1.41c-.49-.51-1.31-.52-1.82-.03-.51.49-.52 1.31-.03 1.82l2.78 2.87c.31.32.76.46 1.2.36.44-.1.79-.41.94-.83.64-1.83 1.2-3.08 1.87-4.12.66-1.03 1.46-1.92 2.65-2.99Z'
+            />
+          </svg>
+          <h4 class='mt-1 text-base md:text-lg'>{step}</h4>
+        </div>
+      ))
+    }
+  </div>
+</div>

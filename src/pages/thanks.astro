@@ -1,0 +1,172 @@
+---
+import Whatsapp from "../components/Whatsapp.astro";
+import Layout from "../layouts/Layout.astro";
+
+const whatsappGroupLink =
+  "https://chat.whatsapp.com/DsNy96q5IPh7IXqnkXSOYR?mode=r_c";
+---
+
+<script>
+  setTimeout(() => {
+    window.location.href =
+      "https://chat.whatsapp.com/DsNy96q5IPh7IXqnkXSOYR?mode=r_c";
+  }, 5000);
+</script>
+<Layout hideNav={true}>
+  <div class='thanks-container'>
+    <img src='/cover.png' alt='Background cover' class='background-image' />
+    <div class='background-overlay'></div>
+
+    <div class='hero-section'>
+      <h1 class='hero-title'>¡Gracias por unirte!</h1>
+    </div>
+
+    <div class='progress-section'>
+      <p class='progress-text'>
+        Tu registro está al <strong>90%</strong>. Solo falta un paso...
+      </p>
+      <div class='progress-wrapper'>
+        <div class='progress-bar ninety'></div>
+      </div>
+    </div>
+
+    <a
+      href='https://chat.whatsapp.com/DsNy96q5IPh7IXqnkXSOYR?mode=r_c'
+      class='mt-6'
+    >
+      <button
+        class='flex flex-row px-10 py-6 text-2xl text-white duration-300 rounded shadow-lg bg-gradient-to-r from-[#25D366] to-[#1EBEA5] hover:from-[#1EBEA5] hover:to-[#25D366] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
+      >
+        Unirme al grupo
+        <Whatsapp class='ml-2' />
+      </button>
+    </a>
+  </div>
+</Layout>
+
+<style>
+  .progress-section {
+    margin-top: 2rem;
+    text-align: center;
+    color: #fff;
+  }
+
+  .progress-text {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .progress-wrapper {
+    width: 100%;
+    max-width: 400px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .progress-bar.ninety {
+    width: 90%;
+    height: 100%;
+    background: linear-gradient(90deg, #25d366, #1ebea5);
+    animation: grow 2s ease-out forwards;
+    border-radius: 5px;
+  }
+
+  @keyframes grow {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 90%;
+    }
+  }
+
+  .thanks-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thanks-container::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+      to bottom right,
+      rgba(0, 13, 36, 0.5),
+      rgba(0, 13, 36, 0.7),
+      rgba(0, 13, 36, 0.9)
+    );
+    z-index: -2;
+  }
+
+  .thanks-container::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+      circle at center,
+      rgba(0, 90, 255, 0.1),
+      transparent,
+      transparent
+    );
+    z-index: -1;
+  }
+
+  .background-image {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: auto;
+    object-fit: cover;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    z-index: -3;
+  }
+
+  .background-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 13, 36, 0.5),
+      transparent,
+      transparent
+    );
+    z-index: -2;
+  }
+
+  .hero-section {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .progress-text {
+      font-size: 1rem;
+    }
+  }
+</style>

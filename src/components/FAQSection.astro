@@ -1,0 +1,78 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+const { title, description, faqs } = Astro.props;
+---
+
+<section class='relative py-24 overflow-hidden'>
+  <!-- Fondo global degradado, sin gradientes locales -->
+  <!-- Formas flotantes -->
+  <div class='floating-shape top-1/4 left-1/4 animate-pulse opacity-30'></div>
+  <div
+    class='floating-shape bottom-1/4 right-1/4 animate-pulse delay-300 opacity-30'
+  >
+  </div>
+
+  <div class='max-w-2xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8'>
+    <div class='text-center'>
+      <h2
+        class='font-bold mb-10 gradient-text'
+        style='color: var(--midnight-blue)'
+      >
+        {title}
+      </h2>
+      <div class='decorative-line mb-16'>
+        <p class='subtitle' style='color: var(--midnight-blue)'>
+          {description}
+        </p>
+      </div>
+      <div class='max-w-3xl mx-auto space-y-4'>
+        {
+          faqs.map((faq) => (
+            <div class='faq-item'>
+              <button class='w-full text-left p-6 bg-oxford-blue/50 rounded-lg hover:bg-oxford-blue/70 transition-colors duration-300 flex items-center justify-between group'>
+                <span class='text-lg font-medium text-midnight-blue group-hover:text-true-blue transition-colors duration-300'>
+                  {faq.question}
+                </span>
+                <svg
+                  class='w-6 h-6 text-true-blue transform transition-transform duration-300 group-hover:rotate-180'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2'
+                    d='M19 9l-7 7-7-7'
+                  />
+                </svg>
+              </button>
+              <div class='faq-answer overflow-hidden transition-all duration-300 max-h-0'>
+                <div class='p-6 bg-oxford-blue/30 rounded-b-lg'>
+                  <p class='text-lg text-cool-gray'>{faq.answer}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+  }
+  .faq-item.active button svg {
+    transform: rotate(180deg);
+  }
+</style>

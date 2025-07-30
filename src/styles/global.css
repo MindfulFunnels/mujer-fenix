@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+
+@import "tailwindcss";
+@import 'flag-icons/css/flag-icons.min.css';
+
+/*
+  Personaliza tu landing cambiando solo estas variables:
+  --color-primary: color principal de la marca
+  --color-secondary: color secundario
+  --color-accent: color de acento (botones, detalles)  
+  --color-bg-alt: color de fondo alternativo
+  --color-text: color principal de texto
+  --color-text-alt: color alternativo de texto
+  Cambia también la fuente en la regla html si lo deseas.
+*/
+:root {
+  --color-primary: #880d1e;         /* ou-crimson */
+  --color-secondary: #dd2d4a;       /* rusty-red */
+  --color-tertiary: #f26a8d;        /* bright-pink-crayola */
+  --color-accent: #f49cbb;          /* amaranth-pink */
+  --color-footer: #88003f;          /* light-cyan */
+  --color-text: #fae5ec;            /* agregado - rosa muy claro */
+  --color-text-alt: #f9c8d1;        /* agregado - rosa pastel suave */
+}
+
+html {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 12px;
+  background: var(--color-primary);
+  background-attachment: fixed;
+  color: var(--color-text);
+}
+
+
+h1 {
+  @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl;  
+  font-style: normal;  
+    font-family: "Kaushan Script", cursive;
+}
+
+h2 {
+  @apply text-3xl underline lg:text-4xl ; 
+  color:white 
+}
+
+h3 {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl; 
+  
+}
+
+h4{
+  @apply text-base sm:text-lg md:text-xl;  
+    
+}
+
+
+p {
+  @apply text-xs sm:text-sm md:text-base;
+   
+}
+
+
+
+button {
+  @apply cursor-pointer;
+}
+
+.nav-div{
+  animation: fade-down 1s ;  
+}
+  
+.div-reveal {
+  animation: reveal linear both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 30%;
+}
+
+.text-hero{
+  animation: fade-up 1s;
+}
+
+.ctabutton {
+  @apply inline-flex items-center justify-center px-6 py-3 text-white transition-all rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
+  background-image: linear-gradient(to right, var(--color-accent), var(--color-primary));
+  transition: background-position 0.8s ease-in-out;
+  background-size: 200% 100%;
+  background-position: left center;
+  transition: all 0.3s ease-in-out;
+}
+
+.ctabutton:hover {
+  scale: 1.05;
+  background-position: right center;
+}
+
+
+
+
+
+@keyframes fade-up{
+  0%{
+    opacity: 0;
+    transform: translatey(-30px) scale(0.9);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translatey(0) scale(1);
+  }
+}
+
+@keyframes fade-down{
+  0%{
+    opacity: 0;
+    transform: translatey(-30px) scale(0.9);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translatey(0) scale(1);
+  }
+}
+
+@keyframes reveal {
+  from{
+    opacity: 0;
+    
+  }
+
+  to{
+    opacity: 1;
+  }
+}
+
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(0, 71, 112, 0.35), /* más oscuro, basado en color-primary */
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(3, 46, 94, 0.25), /* color-tertiary más marcado */
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 142, 236, 0.15), /* tono intermedio */
+      transparent 60%
+    );
+  background-size: 200% 200%;
+  animation: pageGlow 40s ease-in-out infinite;
+  pointer-events: none;
+}
+
+
+
+
+@keyframes pageGlow {
+  0% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+  50% {
+    background-position: 50% 50%, 40% 60%, 60% 40%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+}
+
