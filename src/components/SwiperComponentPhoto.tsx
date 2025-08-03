@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 interface Props {
   images: string[];
@@ -6,7 +6,23 @@ interface Props {
 
 export default function ImageTestimonialsCarousel({ images }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
+  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
+
+  useEffect(() => {
+    // Precargar todas las imágenes
+    images.forEach((src, index) => {
+      const img = new Image();
+      img.onload = () => {
+        setLoadedImages(prev => new Set([...prev, index]));
+      };
+      img.onerror = () => {
+        setImageErrors(prev => new Set([...prev, index]));
+        console.error(`Error loading image: ${src}`);
+      };
+      img.src = src;
+    });
+  }, [images]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -18,10 +34,6 @@ export default function ImageTestimonialsCarousel({ images }: Props) {
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const handleImageLoad = () => {
-    setIsLoading(false);
   };
 
   if (!images || images.length === 0) return null;
@@ -36,18 +48,31 @@ export default function ImageTestimonialsCarousel({ images }: Props) {
         >
           {images.map((image, index) => (
             <div key={index} className='w-full flex-shrink-0 relative'>
-              {/* Loading placeholder */}
-              {isLoading && index === currentIndex && (
-                <div className='absolute inset-0 bg-gray-800 animate-pulse flex items-center justify-center'>
+              {/* Loading placeholder - solo se muestra si la imagen no está cargada Y no hay error */}
+              {!loadedImages.has(index) && !imageErrors.has(index) && (
+                <div className='absolute inset-0 bg-gray-800 animate-pulse flex items-center justify-center z-10'>
                   <div className='w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin'></div>
+                </div>
+              )}
+
+              {/* Error placeholder - se muestra si hay error */}
+              {imageErrors.has(index) && (
+                <div className='absolute inset-0 bg-gray-800 flex items-center justify-center z-10'>
+                  <div className='text-center text-gray-400'>
+                    <svg className='w-16 h-16 mx-auto mb-2' fill='currentColor' viewBox='0 0 20 20'>
+                      <path fillRule='evenodd' d='M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z' clipRule='evenodd' />
+                    </svg>
+                    <p className='text-sm'>Error al cargar imagen</p>
+                  </div>
                 </div>
               )}
 
               <img
                 src={image}
                 alt={`Testimonio ${index + 1}`}
-                className='w-full h-auto max-h-[600px] object-contain transition-opacity duration-300'
-                onLoad={handleImageLoad}
+                className={`w-full h-auto max-h-[600px] object-contain transition-opacity duration-300 ${
+                  loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
+                }`}
                 style={{ minHeight: "300px" }}
               />
 

@@ -402,7 +402,7 @@ body::after {
 
 /* Navigation CTA Button Styles */
 .nav-cta-button {
-  @apply py-4 px-8 text-lg font-semibold;
+  @apply py-4 px-8 text-xl font-semibold;
   position: relative;
   display: inline-flex;
   align-items: center;
