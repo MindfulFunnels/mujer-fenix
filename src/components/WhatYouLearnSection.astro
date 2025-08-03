@@ -1,4 +1,6 @@
 ---
+import InfoCard from "./ui/InfoCard.astro";
+
 interface Props {
   title: string;
   description?: string;
@@ -19,7 +21,7 @@ const { title, description, bullets, id } = Astro.props;
   <div class='grid gap-8 md:grid-cols-2 text-left md:text-center'>
     {
       bullets?.map((bullet) => (
-        <div class='flex gap-4 p-4 rounded-lg bg-[var(--color-primary)] shadow-lg transition-all duration-300 hover:scale-105 justify-center items-center'>
+        <InfoCard class='flex gap-4 transition-all duration-300 hover:scale-105 justify-center items-center group'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -29,7 +31,7 @@ const { title, description, bullets, id } = Astro.props;
             id='Academic-Cap--Streamline-Heroicons-Outline'
             height='24'
             width='24'
-            class='min-w-[24px] mt-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12'
+            class='min-w-[24px] mt-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 text-[var(--color-tertiary)]'
           >
             <desc>Academic Cap Streamline Icon: https://streamlinehq.com</desc>
             <path
@@ -40,7 +42,7 @@ const { title, description, bullets, id } = Astro.props;
             />
           </svg>
           <h4 class='text-base md:text-lg'>{bullet}</h4>
-        </div>
+        </InfoCard>
       ))
     }
   </div>

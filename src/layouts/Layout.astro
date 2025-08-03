@@ -65,15 +65,14 @@ const copyright = `© 2025 Made by <span class='font-extrabold'>${titleLandingPa
       content='https://opengraph.b-cdn.net/production/images/eb865e09-d728-4845-b1c7-ca4869c030b9.png?token=CE9DIHWQboFqwh8lR-oOdxzplHeLjBRsJ_vk6u5GMHI&height=383&width=730&expires=33289917364'
     />
 
-    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+    <script
+      src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'
+      defer></script></head
+  >
 
-    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
-  </head>
-  <body>
+  <body style='position: relative;'>
     <Nav {...copys.nav} />
-    <main class='flex flex-col items-center justify-center mx-auto max-w-7xl'>
-      <slot />
-    </main>
+    <slot />
     <Footer copyright={copyright} />
   </body>
 </html>
@@ -81,5 +80,14 @@ const copyright = `© 2025 Made by <span class='font-extrabold'>${titleLandingPa
 <style is:global>
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    position: relative;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
   }
 </style>

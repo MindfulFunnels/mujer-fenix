@@ -39,30 +39,60 @@ const {
 
 <div
   id={id}
-  class='z-10 flex flex-col items-center gap-4 px-4 py-24 text-center div-reveal sm:px-6 lg:px-8'
+  class='relative z-10 flex flex-col items-center gap-8 px-4 py-24 text-center div-reveal sm:px-6 lg:px-8'
 >
-  <h2 class='font-bold gradient-text'>
-    {title}
-  </h2>
+  <!-- Elementos decorativos de fondo -->
+  <div
+    class='absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-yellow-400/10 to-rose-300/10 rounded-full blur-xl'
+  >
+  </div>
+  <div
+    class='absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-bl from-yellow-400/8 to-rose-300/8 rounded-full blur-2xl'
+  >
+  </div>
 
-  <h4 class='subtitle'>
-    {description}
-  </h4>
+  <div class='relative max-w-7xl mx-auto w-full'>
+    <!-- Título principal centrado -->
+    <div class='text-center mb-12'>
+      <h2 class='font-bold gradient-text mb-6'>
+        {title}
+      </h2>
+    </div>
 
-  {text && <p>{text}</p>}
+    <!-- Layout en dos columnas para desktop -->
+    <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+      <!-- Columna izquierda: RegisterBox -->
+      <div class='order-2 lg:order-1'>
+        <div class='w-full max-w-md mx-auto lg:max-w-none'>
+          <RegisterBox
+            client:load
+            title={registerTitle}
+            namePlaceholder={registerNamePlaceholder}
+            emailPlaceholder={registerEmailPlaceholder}
+            buttonText={registerButtonText}
+            errorEmpty={registerErrorEmpty}
+            errorEmail={registerErrorEmail}
+            errorServer={registerErrorServer}
+            success={registerSuccess}
+            secureMessage={registerSecureMessage}
+          />
+        </div>
+      </div>
 
-  <div class='w-full'>
-    <RegisterBox
-      client:load
-      title={registerTitle}
-      namePlaceholder={registerNamePlaceholder}
-      emailPlaceholder={registerEmailPlaceholder}
-      buttonText={registerButtonText}
-      errorEmpty={registerErrorEmpty}
-      errorEmail={registerErrorEmail}
-      errorServer={registerErrorServer}
-      success={registerSuccess}
-      secureMessage={registerSecureMessage}
-    />
+      <!-- Columna derecha: Contenido de texto -->
+      <div class='order-1 lg:order-2 text-center lg:text-left'>
+        <h4 class='subtitle leading-relaxed mb-6'>
+          {description}
+        </h4>
+
+        {
+          text && (
+            <p class='text-gray-200 leading-relaxed text-lg lg:text-xl'>
+              {text}
+            </p>
+          )
+        }
+      </div>
+    </div>
   </div>
 </div>

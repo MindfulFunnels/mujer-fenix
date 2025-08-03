@@ -9,7 +9,7 @@ const { href, label, class: className } = Astro.props;
 ---
 
 <div class='flex items-center justify-center mx-4 text-center div-reveal'>
-  <a href={href} class='ctabutton'>
-    <h4>{label}</h4>
+  <a href={href} class={`ctabutton ${className ?? ""}`}>
+    {label}
   </a>
 </div>

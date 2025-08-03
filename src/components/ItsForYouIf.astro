@@ -1,4 +1,6 @@
 ---
+import InfoCard from "./ui/InfoCard.astro";
+
 // Componente Astro
 interface Props {
   title: string;
@@ -19,7 +21,7 @@ const { title, description, steps, inclusions, id } = Astro.props;
   <div class='flex flex-col gap-8'>
     {
       steps.map((step, index) => (
-        <div class='flex gap-4 p-6 shadow-lg rounded-lg bg-[var(--color-primary)] transition-all duration-300 hover:scale-105 '>
+        <InfoCard class='flex gap-4 transition-all duration-300 hover:scale-105'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -27,7 +29,7 @@ const { title, description, steps, inclusions, id } = Astro.props;
             height='24'
             width='24'
             stroke='currentColor'
-            class='min-w-[24px] mt-1'
+            class='min-w-[24px] mt-1 text-[var(--color-tertiary)]'
           >
             <path
               stroke='currentColor'
@@ -38,7 +40,7 @@ const { title, description, steps, inclusions, id } = Astro.props;
             />
           </svg>
           <h4 class='mt-1 text-base md:text-lg'>{step}</h4>
-        </div>
+        </InfoCard>
       ))
     }
   </div>

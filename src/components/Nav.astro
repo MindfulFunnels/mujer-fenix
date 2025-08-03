@@ -23,7 +23,7 @@ import CTAButton from "./CTAButton.astro";
       <div class='flex items-center justify-between h-16'>
         {/* Logo */}
 
-        <a href='#hero' class='flex items-center hover:animate-pulse'>
+        <a href='/' class='flex items-center hover:animate-pulse'>
           <img src='/logo.png' alt='Logo' class='w-40' />
         </a>
 
@@ -46,11 +46,7 @@ import CTAButton from "./CTAButton.astro";
 
         {/* CTA Desktop */}
         <div class='hidden md:block'>
-          <CTAButton
-            href={ctaHref}
-            label={ctaLabel}
-            class='hover:shadow-none'
-          />
+          <CTAButton href={ctaHref} label={ctaLabel} class='nav-cta-button' />
         </div>
 
         {/* Menú móvil button */}
@@ -58,7 +54,7 @@ import CTAButton from "./CTAButton.astro";
           <CTAButton
             href={ctaHref}
             label={ctaLabel}
-            class='hover:shadow-none hover:border-2'
+            class='nav-cta-button-mobile'
           />
           <button
             class='text-[color:var(--color-text)] hover:text-white inline-flex items-center justify-center p-2 rounded-md transition-colors duration-300'

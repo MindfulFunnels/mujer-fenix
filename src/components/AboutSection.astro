@@ -11,25 +11,210 @@ interface Props {
 const { title, description, texts, achievements, phrase, id } = Astro.props;
 ---
 
-<div
-  class='items-center justify-center w-full min-h-screen grid-cols-2 px-4 py-24 md:grid sm:px-6 lg:px-8'
-  id={id}
->
-  <div class='relative z-10 px-4 mx-auto sm:px-6 lg:px-8'>
-    <div class='flex flex-col items-center gap-2 text-center'>
-      <h2 class='font-bold gradient-text'>
-        {title}
-      </h2>
-      {description && <p class='mb-10 text-center subtitle'>{description}</p>}
-      {texts?.map((text) => <h4 class='mb-4 text-center '>{text}</h4>)}
+<div class='w-full min-h-screen px-4 py-24 sm:px-6 lg:px-8' id={id}>
+  <div class='max-w-7xl mx-auto'>
+    <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+      <!-- Columna de Texto -->
+      <div class='relative z-10 order-2 lg:order-1'>
+        <div class='flex flex-col gap-6'>
+          <h2 class='font-bold gradient-text text-left'>
+            {title}
+          </h2>
+          {
+            description && (
+              <p class='text-left subtitle text-xl leading-relaxed'>
+                {description}
+              </p>
+            )
+          }
+          {
+            texts?.map((text) => (
+              <h4 class='text-left text-lg leading-relaxed text-gray-200'>
+                {text}
+              </h4>
+            ))
+          }
+          {
+            phrase && (
+              <blockquote class='relative pl-6 border-l-4 border-gradient italic text-xl text-rose-200 mt-6'>
+                "{phrase}"
+              </blockquote>
+            )
+          }
+        </div>
+      </div>
+
+      <!-- Columna de Collage de Imágenes -->
+      <div class='relative order-1 lg:order-2'>
+        <div class='image-collage'>
+          <!-- Imagen Principal -->
+          <div class='main-image'>
+            <img
+              src='/jime1.webp'
+              alt='Jime - Terapeuta emocional'
+              class='rounded-2xl shadow-2xl object-cover w-full h-full'
+            />
+          </div>
+
+          <!-- Imagen Secundaria Superior -->
+          <div class='secondary-image-top'>
+            <img
+              src='/jime2.webp'
+              alt='Jime - Guía de transformación'
+              class='rounded-xl shadow-xl object-cover w-full h-full'
+            />
+          </div>
+
+          <!-- Imagen Secundaria Inferior -->
+          <div class='secondary-image-bottom'>
+            <img
+              src='/jime3.webp'
+              alt='Jime - Especialista en amor propio'
+              class='rounded-xl shadow-xl object-cover w-full h-full'
+            />
+          </div>
+
+          <!-- Elementos decorativos dorados -->
+          <div class='decorative-element top-element'></div>
+          <div class='decorative-element bottom-element'></div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class='flex items-center'>
-    <img
-      src='/about.webp'
-      alt='About section background'
-      class='absolute justify-start object-contain w-auto pointer-events-none max-h-[600px] image-hero opacity-60 md:mt-2 mt-48'
-      style='mask-image: linear-gradient(blue 20%, transparent );'
-    />
-  </div>
 </div>
+
+<style>
+  .gradient-text {
+    background: linear-gradient(135deg, #d4af37, #e2bccd, #f8e5ec);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(135deg, #d4af37, #e2bccd) 1;
+  }
+
+  .image-collage {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+  }
+
+  .main-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 70%;
+    z-index: 3;
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+  }
+
+  .main-image:hover {
+    transform: rotate(-2deg) scale(1.02);
+  }
+
+  .secondary-image-top {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 45%;
+    height: 35%;
+    z-index: 2;
+    transform: rotate(3deg);
+    transition: transform 0.3s ease;
+  }
+
+  .secondary-image-top:hover {
+    transform: rotate(3deg) scale(1.05);
+  }
+
+  .secondary-image-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 15%;
+    width: 40%;
+    height: 40%;
+    z-index: 2;
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease;
+  }
+
+  .secondary-image-bottom:hover {
+    transform: rotate(-1deg) scale(1.05);
+  }
+
+  .decorative-element {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(
+      circle,
+      rgba(212, 175, 55, 0.3) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .top-element {
+    top: -20px;
+    right: -20px;
+    animation-delay: 0s;
+  }
+
+  .bottom-element {
+    bottom: -20px;
+    left: -20px;
+    animation-delay: 3s;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-10px) scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  .subtitle {
+    color: var(--color-text-alt);
+  }
+
+  @media (max-width: 1024px) {
+    .image-collage {
+      height: 400px;
+      margin-bottom: 2rem;
+    }
+
+    .main-image {
+      width: 65%;
+      height: 65%;
+    }
+
+    .secondary-image-top,
+    .secondary-image-bottom {
+      width: 50%;
+      height: 40%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .image-collage {
+      height: 350px;
+    }
+
+    .decorative-element {
+      width: 60px;
+      height: 60px;
+    }
+  }
+</style>

@@ -14,15 +14,15 @@ import { date } from "astro:schema";
 // Copys centralizados para toda la landing
 const copys = {
   hero: {
-    title: "Mujer Fénix",
+    title: "Evento Exclusivo",
+    date: "Domingo 31 de Agosto",
     questions: [
-      "¿Sos de las que hizo terapia, cursos y dieta… pero seguís sintiéndote rota frente al espejo?",
+      "Comenza a sentirte cómoda con tu cuerpo y en paz con la comida, sin dietas, culpa ni autoexigencia",
       "¿Estás cansada de luchar con tu cuerpo, de intentar controlarte para no “caer”, de vivir con culpa después de comer?",
     ],
     subtitle:
-      "Jime Frontera, terapeuta emocional con +430.000 seguidoras en Instagram, te guía en una experiencia transformadora para dejar atrás la exigencia y reconectar con tu cuerpo desde un lugar de amor, conciencia y libertad.",
-    text: "Esta clase no es sobre cómo tener “más fuerza de voluntad” o “comer mejor”. Es sobre soltar la guerra. Volver a confiar. Volver a sentirte segura en tu piel.",
-    date: "Viernes 30 de agosto ",
+      "En este evento vas a descubrir cómo dejar de pelear con tu cuerpo y la comida y empezar a construir una relación basada en respeto, aceptación y amor . Sin dietas. Sin castigos. Sin exigirte ser otra para sentirte en paz.",
+    text: "Aprendé a amar tu cuerpo y hacer las paces con la comida. Deja de vivir en guerra con tu cuerpo y la comida y aprendé a mirarte con amor, a comer en armonía y a sentirte suficiente con quien ya sos.",
     ctaText: "Reservar mi lugar en la clase gratuita",
     ctaLink: "#register",
   },
@@ -31,28 +31,27 @@ const copys = {
     title:
       "El primer paso para salir del loop de la culpa, la autoexigencia y el control.",
     description:
-      "En esta clase vas a descubrir por qué, aunque hayas trabajado mucho en vos, todavía te pesa mirarte al espejo, comés con culpa o sentís que tu cuerpo es un enemigo.",
-    text: "Y más importante aún, vas a entender cómo sanar esa relación de raíz: no desde el control mental ni la dieta disfrazada, sino desde la conexión emocional profunda y la reconexión con tu verdad.",
+      "Esta Masterclass es el primer paso para que el 2025 no sea otro año más de lucha con vos misma. Es para mujeres que ya intentaron “todo” —y están listas para hacer algo distinto.",
   },
 
   liveEvent: {
-    title: "Viernes 30 de agosto",
-    subtitle: "Clase gratuita en vivo",
+    title: "Domingo 31 de Agosto",
+    subtitle: "Evento online – acceso solo por registro",
     dateLabel: "Fecha",
-    date: "Viernes 30 de agosto",
-    timeLabel: "Horario",
-    importantLabel: "⚠️ Importante",
-    importantText:
-      "La Clase no se graba. Es una experiencia única, solo en vivo.",
+    date: "Domingo 31 de Agosto",
+    timeLabel: "Horarios",
+    importantText: "Plazas limitadas, no te quedes afuera.",
     times: [
-      { country: "España", time: "00:00h", flag: "fi fi-es" },
-      { country: "Argentina", time: "19:00h", flag: "fi fi-ar" },
-      { country: "México", time: "16:00h", flag: "fi fi-mx" },
-      { country: "Miami", time: "18:00h", flag: "fi fi-us" },
-      { country: "Colombia", time: "17:00h", flag: "fi fi-co" },
-      { country: "Chile", time: "18:00h", flag: "fi fi-cl" },
-      { country: "Perú", time: "17:00h", flag: "fi fi-pe" },
-      { country: "Venezuela", time: "18:00h", flag: "fi fi-ve" },
+      { country: "Argentina", time: "19:00hs", flag: "fi fi-ar" },
+      { country: "Chile", time: "18:00hs", flag: "fi fi-cl" },
+      { country: "Uruguay", time: "18:00hs", flag: "fi fi-uy" },
+      { country: "Paraguay", time: "18:00hs", flag: "fi fi-py" },
+      { country: "Colombia", time: "17:00hs", flag: "fi fi-co" },
+      { country: "Perú", time: "17:00hs", flag: "fi fi-pe" },
+      { country: "México", time: "16:00hs", flag: "fi fi-mx" },
+      { country: "España", time: "00:00hs", flag: "fi fi-es" },
+      { country: "Miami", time: "18:00hs", flag: "fi fi-us" },
+      { country: "Venezuela", time: "18:00hs", flag: "fi fi-ve" },
     ],
   },
 
@@ -61,11 +60,11 @@ const copys = {
     description:
       "Una experiencia que no se queda en la teoría. Vas a integrar una nueva forma de relacionarte con vos.",
     bullets: [
-      "Los 3 errores invisibles que seguís repitiendo con tu cuerpo (aunque hayas hecho terapia y mil procesos)",
-      "Por qué seguir intentando “comer bien” o “tener fuerza de voluntad” te mantiene en guerra",
-      "Cómo detectar la raíz emocional que está detrás de tu relación con la comida",
-      "Qué significa sanar desde la conciencia y no desde la exigencia",
-      "El camino para volver a sentir paz, disfrute y libertad con vos misma",
+      "Por qué vivís atrapada en un ciclo que te desgasta: no te gusta tu cuerpo, controlás lo que comés, te desbordás, te sentís culpable, volvés a empezar… y cómo romperlo sin más ansiedad.",
+      "Cómo dejar de autosabotearte empezando por sanar el vínculo con tu cuerpo, en lugar de seguir peleando contra él. Podría ser: Cómo dejar de autosabotearte para alcanzar tus metas siento tu mejor amiga, y no tu peor enemiga.",
+      "Cómo mirarte al espejo y conectar con una profunda sensación de amor, gratitud paz.",
+      "El método de 4 pasos que ya ayudó a cientos de mujeres a recuperar su autoestima y volver a sentirse cómodas en su cuerpo.",
+      "Qué tenés que cambiar (y qué no) para empezar a vivir en calma, sin que la comida ni tu imagen dominen tu vida.",
     ],
   },
 
@@ -146,7 +145,7 @@ const copys = {
 
     <LiveEventSection id='live-event' {...copys.liveEvent} />
 
-    <CTAButton href='#register' label='👉 Quiero mi lugar en la clase' />
+    <CTAButton href='#register' label='Quiero mi lugar en la clase' />
 
     <WhatYouLearnSection id='you-will-learn' {...copys.whatYouLearn} />
 
