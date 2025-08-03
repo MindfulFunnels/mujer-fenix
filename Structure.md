@@ -4,6 +4,7 @@ ENCABEZADO PRINCIPAL
 
 Título:
 Comenza a sentirte cómoda con tu cuerpo y en paz con la comida, sin dietas, culpa ni autoexigencia
+
 Sugerencias:
 Aprendé a amar tu cuerpo y hacer las paces con la comida
 Deja de vivir en guerra con tu cuerpo y la comida y aprendé a mirarte con amor, a comer en armonía y a sentirte suficiente con quien ya sos.
@@ -22,7 +23,7 @@ Subtítulo:
 
 💜 SUBTÍTULO DE URGENCIA
 Esta Masterclass es el primer paso para que el 2025 no sea otro año más de lucha con vos misma.
-Es para mujeres que ya intentaron “todo” —y están listas para hacer algo distinto.
+Es para mujeres que ya intentaron “todo”  y están listas para hacer algo distinto.
 
 ✨ LO QUE VAS A APRENDER EN ESTA MASTERCLASS
 
@@ -48,7 +49,7 @@ Te cuesta sostener hábitos saludables porque vivís estresada y con ansiedad
 
 Querés dejar de vivir pendiente del espejo, del control, o del “me fallé otra vez”
 
-Tenés una voz dentro tuyo que dice con firmenza: “ya no quiero vivir así “
+Tenés una voz dentro tuyo que dice con firmenza: “ya no quiero vivir así“
 
 👉 [Reservá tu lugar ahora]
 

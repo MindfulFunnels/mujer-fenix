@@ -34,7 +34,7 @@ body {
 
 
 h1 {
-  @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl;  
+  @apply text-6xl md:text-7xl lg:text-8xl;  
   font-style: normal;  
   font-family: "Cormorant", serif;
 }
@@ -44,26 +44,29 @@ h1 {
   font-family: "Cormorant", serif;
 }
 h2 {
-  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl; 
-  color:white 
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold; 
+  background: linear-gradient(135deg, #d4af37, #e2bccd, #f8e5ec);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 h3 {
-  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;   
+  @apply text-2xl md:text-3xl lg:text-4xl;   
 }
 
 h4{
-  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;  
+  @apply text-xl md:text-2xl lg:text-3xl;  
     
 }
 
 p {
-  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;   
+  @apply text-xl md:text-2xl lg:text-3xl;   
 }
 
 
 a{
-  @apply text-sm sm:text-base md:text-lg lg:text-xl ;
+  @apply text-base md:text-lg lg:text-xl ;
 
 }
 
@@ -399,13 +402,13 @@ body::after {
 
 /* Navigation CTA Button Styles */
 .nav-cta-button {
-  @apply py-2 px-4 text-sm font-medium;
+  @apply py-4 px-8 text-lg font-semibold;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  border-radius: 25px;
+  border-radius: 30px;
   background: linear-gradient(135deg, 
     rgba(212, 175, 55, 0.8) 0%,
     rgba(226, 188, 205, 0.8) 50%,
@@ -433,13 +436,13 @@ body::after {
 }
 
 .nav-cta-button-mobile {
-  @apply py-1.5 px-3 text-xs font-medium;
+  @apply py-3 px-5 text-base font-semibold;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  border-radius: 20px;
+  border-radius: 25px;
   background: linear-gradient(135deg, 
     rgba(212, 175, 55, 0.8) 0%,
     rgba(226, 188, 205, 0.8) 50%,

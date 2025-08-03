@@ -5,6 +5,7 @@ interface Props {
   title: string;
   id: string;
   subtitle: string;
+  secondTitle?: string;
   text?: string;
   ctaText: string;
   ctaLink: string;
@@ -15,6 +16,7 @@ interface Props {
 const {
   title,
   subtitle,
+  secondTitle,
   ctaText,
   ctaLink,
   text,
@@ -41,6 +43,10 @@ const {
       {title}
       <span class='span-h1'>{date}</span>
     </h1>
+
+    <h2 class='subtitle font-bold'>
+      {secondTitle}
+    </h2>
 
     <h2 class='subtitle'>
       {subtitle}

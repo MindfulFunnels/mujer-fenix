@@ -10,32 +10,22 @@ interface Props {
 const { title, id, videos, screenshots, textTestimonials } = Astro.props;
 
 import ImageCarousel from "../components/SwiperComponentPhoto";
+import VideoTestimonialsCarousel from "../components/VideoTestimonialsCarousel";
 ---
 
 <section
   id={id}
   class='flex flex-col items-center gap-8 px-6 py-24 mx-auto text-center sm:px-6 lg:px-8'
 >
-  <h2 class='mb-10 text-3xl font-bold gradient-text drop-shadow-lg'>
+  <h2 class='mb-10 drop-shadow-lg'>
     {title}
   </h2>
 
+  {/* Carrusel de Videos de Testimonios */}
   {
-    videos.map((video) => (
-      <div class='w-full mx-auto'>
-        <div class='relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden shadow-lg'>
-          <iframe
-            class='absolute top-0 left-0 w-full h-full'
-            src={video}
-            title='YouTube video player'
-            frameborder='0'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-            referrerpolicy='strict-origin-when-cross-origin'
-            allowfullscreen
-          />
-        </div>
-      </div>
-    ))
+    videos && videos.length > 0 && (
+      <VideoTestimonialsCarousel videos={videos} client:load />
+    )
   }
 
   {
