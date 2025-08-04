@@ -11,16 +11,21 @@ import CTAButton from "../components/CTAButton.astro";
 import WhatYouLearnSection from "../components/WhatYouLearnSection.astro";
 import { date } from "astro:schema";
 
+// Importar lista automática de testimonios
+import testimonialsData from "../data/testimonials.json";
+const finalTestimonialImages = testimonialsData.images;
+
 // Copys centralizados para toda la landing
 const copys = {
   hero: {
     title: "Evento Exclusivo",
     date: "Domingo 31 de Agosto",
+    schedule: "19:00hs 🇦🇷",
     secondTitle:
-      "Comenza a sentirte cómoda con tu cuerpo y en paz con la comida, sin dietas, culpa ni autoexigencia",
+      "Comenzá a sentirte cómoda con tu cuerpo y en paz con la comida, sin dietas, culpa, ni autoexigencia",
     subtitle:
       "En este evento vas a descubrir cómo dejar de pelear con tu cuerpo y la comida y empezar a construir una relación basada en respeto, aceptación y amor . Sin dietas. Sin castigos. Sin exigirte ser otra para sentirte en paz.",
-    ctaText: "Reservar mi lugar en la clase gratuita",
+    ctaText: "Reservar mi lugar en la clase",
     ctaLink: "#register",
   },
 
@@ -28,7 +33,7 @@ const copys = {
     title:
       "El primer paso para salir del loop de la culpa, la autoexigencia y el control.",
     description:
-      "Esta Masterclass es el primer paso para que el 2025 no sea otro año más de lucha con vos misma. Es para mujeres que ya intentaron “todo”  y están listas para hacer algo distinto.",
+      "Esta Masterclass es el primer paso para que no termines el año en lucha con vos misma. Es para mujeres que ya intentaron “todo”  y están listas para hacer algo distinto.",
   },
 
   liveEvent: {
@@ -107,14 +112,7 @@ const copys = {
       "https://www.youtube.com/embed/ScMzIvxBSi4",
     ],
 
-    screenshots: [
-      "/testimonial1.jpg",
-      "/testimonial2.jpg",
-      "/testimonial3.jpg",
-      "/testimonial4.jpg",
-      "/testimonial5.jpg",
-      "/testimonial6.jpg",
-    ],
+    screenshots: finalTestimonialImages,
 
     textTestimonials: [
       "“Nunca había sentido tanta paz con mi cuerpo. Jime me ayudó a ver todo desde otro lugar.”",
@@ -181,7 +179,7 @@ const copys = {
 
     <AboutSection id='about' {...copys.about} />
 
-    <h2 class='text-center text-2xl font-bold mt-12 mb-8'>
+    <h2 class='text-center font-bold mt-12 mb-8 h2-subtitle'>
       Esta no es otra masterclass sobre “cómo aceptarse de una vez por todas”.
       Es una experiencia emocional que puede ser el antes y después que
       necesitabas.

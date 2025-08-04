@@ -15,9 +15,9 @@ import VideoTestimonialsCarousel from "../components/VideoTestimonialsCarousel";
 
 <section
   id={id}
-  class='flex flex-col items-center gap-8 px-6 py-24 mx-auto text-center sm:px-6 lg:px-8'
+  class='flex flex-col items-center gap-8 px-4 py-16 mx-auto text-center sm:px-6 lg:px-8 max-w-6xl'
 >
-  <h2 class='mb-10 drop-shadow-lg'>
+  <h2 class='h2-subtitle'>
     {title}
   </h2>
 
@@ -30,7 +30,9 @@ import VideoTestimonialsCarousel from "../components/VideoTestimonialsCarousel";
 
   {
     screenshots && screenshots.length > 0 && (
-      <ImageCarousel images={screenshots} client:load />
+      <div class='w-full max-w-sm sm:max-w-2xl lg:max-w-4xl'>
+        <ImageCarousel images={screenshots} client:load />
+      </div>
     )
   }
 

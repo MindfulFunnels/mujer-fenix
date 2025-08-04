@@ -43,11 +43,16 @@ h1 {
   @apply block mt-2 text-4xl sm:text-5xl  md:text-6xl lg:text-7xl;
   font-family: "Cormorant", serif;
 }
+
 h2 {
-  @apply text-3xl md:text-4xl lg:text-5xl font-bold; 
+  @apply text-3xl md:text-4xl lg:text-5xl ;
+}
+
+.h2-subtitle {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold;
   background: linear-gradient(135deg, #d4af37, #e2bccd, #f8e5ec);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; 
   background-clip: text;
 }
 
@@ -66,8 +71,7 @@ p {
 
 
 a{
-  @apply text-base md:text-lg lg:text-xl ;
-
+  @apply text-base md:text-lg lg:text-xl;
 }
 
 button {
@@ -76,6 +80,7 @@ button {
 
 .nav-div{
   animation: fade-down 1s ;  
+  
 }
   
 .div-reveal {
@@ -89,13 +94,12 @@ button {
 }
 
 .ctabutton {
-  @apply py-3 px-8 text-lg sm:text-xl md:text-2xl lg:text-3xl;  
+  @apply py-3 px-8 text-2xl sm:text-3xl md:text-4xl font-extrabold;  
   position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;  
-  font-weight: 600;  
-  color: #ffffff;
+  justify-content: center;     
+  color: #000;
   border-radius: 50px;
   background: linear-gradient(135deg, 
     rgba(212, 175, 55, 0.9) 0%,
@@ -406,8 +410,7 @@ body::after {
   position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: #ffffff;
+  justify-content: center;  
   border-radius: 30px;
   background: linear-gradient(135deg, 
     rgba(212, 175, 55, 0.8) 0%,
@@ -436,12 +439,12 @@ body::after {
 }
 
 .nav-cta-button-mobile {
-  @apply py-3 px-5 text-base font-semibold;
+  @apply py-2 px-4 ;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  
   border-radius: 25px;
   background: linear-gradient(135deg, 
     rgba(212, 175, 55, 0.8) 0%,
@@ -462,52 +465,5 @@ body::after {
   box-shadow: 
     0 3px 8px rgba(212, 175, 55, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* Register CTA Button Styles */
-.register-cta-button {
-  position: relative;
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.9) 0%,
-    rgba(226, 188, 205, 0.9) 25%,
-    rgba(248, 229, 236, 0.9) 50%,
-    rgba(226, 188, 205, 0.9) 75%,
-    rgba(212, 175, 55, 0.9) 100%
-  );
-  border: 2px solid transparent;
-  box-shadow: 
-    0 8px 32px rgba(212, 175, 55, 0.3),
-    0 4px 16px rgba(226, 188, 205, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.register-cta-button::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 2px;
-  background: linear-gradient(135deg, 
-    #d4af37 0%,
-    #e2bccd 25%,
-    #f8e5ec 50%,
-    #e2bccd 75%,
-    #d4af37 100%
-  );
-  border-radius: 8px;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask-composite: xor;
-  z-index: -1;
-  animation: borderRotate 3s linear infinite;
-}
-
-.register-cta-button:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 
-    0 12px 40px rgba(212, 175, 55, 0.4),
-    0 6px 20px rgba(226, 188, 205, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 

@@ -158,12 +158,10 @@ export default function RegisterBox({
           ) : (
             <button
               type='submit'
-              className='register-cta-button w-full py-4 text-[16px] font-bold text-white transition-all duration-300 rounded-lg relative overflow-hidden group'
+              className='ctabutton w-full'
               onClick={handleSubmit}
             >
-              <span className='relative z-10'>{buttonText}</span>
-              <div className='absolute inset-0 bg-gradient-to-r from-yellow-400 via-rose-300 to-yellow-400 opacity-90 group-hover:opacity-100 transition-opacity duration-300'></div>
-              <div className='absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-rose-300/20 to-yellow-400/20 blur-xl group-hover:blur-sm transition-all duration-300'></div>
+              {buttonText}
             </button>
           )}
 

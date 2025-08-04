@@ -3,10 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "npm run update-testimonials && astro dev",
+    "build": "npm run update-testimonials && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "update-testimonials": "node scripts/generate-testimonials.js"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
