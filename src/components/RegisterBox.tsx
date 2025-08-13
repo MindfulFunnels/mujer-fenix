@@ -1,3 +1,4 @@
+// /src/components/RegisterBox.tsx
 import React, { useRef, useState } from "react";
 
 interface RegisterBoxProps {
@@ -59,30 +60,25 @@ export default function RegisterBox({
     };
 
     const capitalizedName = capitalizeFirstLetter(name);
-
     try {
       const userRes = await fetch("/api/users", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: capitalizedName,
           email: email.toLowerCase(),
         }),
       });
 
-      if (userRes.ok) {
-        setSuccessMessage(success);
-        setTimeout(() => {
-          window.location.href = "/thanks";
-        }, 2000);
-      } else {
-        setSuccessMessage(success);
-        setTimeout(() => {
-          window.location.href = "/thanks";
-        }, 2000);
+      if (!userRes.ok) {
+        const text = await userRes.text();
+        throw new Error(text || "Error servidor");
       }
+
+      setSuccessMessage(success);
+      setTimeout(() => {
+        window.location.href = "/thanks";
+      }, 1200);
     } catch (error) {
       setErrorMessages(errorServer);
       setIsSubmitting(false);
