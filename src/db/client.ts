@@ -39,3 +39,12 @@ export const addUser = async (name: string, email: string) => {
     throw error;
   }
 };
+
+export const getUsers = async () => {
+  const result = await client.execute(`
+    SELECT name, email, creation_date
+    FROM Usuarios
+    ORDER BY creation_date DESC
+  `);
+  return result.rows;
+};
