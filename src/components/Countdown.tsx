@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function getTimeLeft() {
-  const eventDate = new Date("2025-08-31T17:55:00");
+  const eventDate = new Date("2025-08-30T17:55:00");
   const now = new Date();
   const diff = eventDate.getTime() - now.getTime();
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -14,38 +14,52 @@ function getTimeLeft() {
 
 const Countdown: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(getTimeLeft());
+      const tl = getTimeLeft();
+      setTimeLeft(tl);
+      if (
+        tl.days === 0 &&
+        tl.hours === 0 &&
+        tl.minutes === 0 &&
+        tl.seconds === 0
+      ) {
+        setStarted(true);
+        clearInterval(timer);
+      }
     }, 1000);
     return () => clearInterval(timer);
   }, []);
 
+  if (started) {
+    return (
+      <div className='event-started'>
+        <div className='event-started-inner'>YA COMENZAMOS</div>
+      </div>
+    );
+  }
+
+  // Construir unidades — mostrar siempre todas las unidades, incluso si son 0
+  const units = [
+    { key: "days", value: timeLeft.days, label: "Días" },
+    { key: "hours", value: timeLeft.hours, label: "Horas" },
+    { key: "minutes", value: timeLeft.minutes, label: "Minutos" },
+    { key: "seconds", value: timeLeft.seconds, label: "Segundos" },
+  ];
   return (
     <div className='countdown-wrapper'>
-      <div className='count-item'>
-        <div className='count-number'>{timeLeft.days}</div>
-        <div className='count-label'>Días</div>
-      </div>
-      <div className='count-item'>
-        <div className='count-number'>
-          {String(timeLeft.hours).padStart(2, "0")}
+      {units.map((u) => (
+        <div className='count-item' key={u.key}>
+          <div className='count-number'>
+            {u.key === "days"
+              ? String(u.value)
+              : String(u.value).padStart(2, "0")}
+          </div>
+          <div className='count-label'>{u.label}</div>
         </div>
-        <div className='count-label'>Horas</div>
-      </div>
-      <div className='count-item'>
-        <div className='count-number'>
-          {String(timeLeft.minutes).padStart(2, "0")}
-        </div>
-        <div className='count-label'>Minutos</div>
-      </div>
-      <div className='count-item'>
-        <div className='count-number'>
-          {String(timeLeft.seconds).padStart(2, "0")}
-        </div>
-        <div className='count-label'>Segundos</div>
-      </div>
+      ))}
     </div>
   );
 };

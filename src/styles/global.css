@@ -34,22 +34,26 @@ body {
 
 
 h1 {
-  @apply text-6xl md:text-7xl lg:text-8xl;  
-  font-style: normal;  
+  /* equivalente a text-6xl / md:text-7xl / lg:text-8xl */
+  font-size: 3.75rem;
+  font-style: normal;
   font-family: "Cormorant", serif;
 }
 
 .span-h1{
-  @apply block mt-2 text-4xl sm:text-5xl  md:text-6xl lg:text-7xl;
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 2.25rem;
   font-family: "Cormorant", serif;
 }
 
 h2 {
-  @apply text-3xl md:text-4xl lg:text-5xl ;
+  font-size: 1.875rem;
 }
 
 .h2-subtitle {
-  @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  font-size: 1.875rem;
+  font-weight: 700;
   background: linear-gradient(135deg, #d4af37, #e2bccd, #f8e5ec);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
@@ -57,25 +61,24 @@ h2 {
 }
 
 h3 {
-  @apply text-2xl md:text-3xl lg:text-4xl;   
+  font-size: 1.5rem;
 }
 
 h4{
-  @apply text-xl md:text-2xl lg:text-3xl;  
-    
+  font-size: 1.25rem;
 }
 
 p {
-  @apply text-xl md:text-2xl lg:text-3xl;   
+  font-size: 1.25rem;
 }
 
 
 a{
-  @apply text-base md:text-lg lg:text-xl;
+  font-size: 1rem;
 }
 
 button {
-  @apply cursor-pointer;
+  cursor: pointer;
 }
 
 .nav-div{
@@ -83,18 +86,17 @@ button {
   
 }
   
-.div-reveal {
-  /* animation: reveal linear both;
-  animation-timeline: view();
-  animation-range: entry 20% cover 30%; */
-}
+/* .div-reveal removed (was empty) */
 
 .text-hero{
   animation: fade-up 1s;
 }
 
 .ctabutton {
-  @apply py-3 px-8 text-2xl sm:text-3xl md:text-4xl font-extrabold;  
+  /* padding and font-size approximations for Tailwind classes */
+  padding: 0.75rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -406,7 +408,9 @@ body::after {
 
 /* Navigation CTA Button Styles */
 .nav-cta-button {
-  @apply py-4 px-8 text-xl font-semibold;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -439,7 +443,7 @@ body::after {
 }
 
 .nav-cta-button-mobile {
-  @apply py-2 px-4 ;
+  padding: 0.5rem 1rem;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -484,16 +488,16 @@ body::after {
   background: linear-gradient(180deg, rgba(212,175,55,0.98), rgba(226,188,205,0.95));
   color: #2a1f10; /* texto oscuro sobre dorado */
   font-weight: 900;
-  font-size: 4rem; /* más grande */
-  padding: 0.9rem 1.6rem; /* más padding para cajas más grandes */
+  font-size: 4.4rem; /* más grande */
+  padding: 1rem 1.8rem; /* más padding para cajas más grandes */
   border-radius: 16px; /* bordes más redondeados */
   border: 2px solid rgba(255,255,255,0.12);
-  box-shadow: 0 10px 36px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
-  text-shadow: 0 1px 0 rgba(255,255,255,0.25), 0 10px 28px rgba(212,175,55,0.14);
+  box-shadow: 0 14px 48px rgba(0,0,0,0.44), inset 0 1px 0 rgba(255,255,255,0.15);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.25), 0 12px 34px rgba(212,175,55,0.16);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 5.6rem;
+  min-width: 6rem;
 }
 .count-label {
   font-size: 1rem;
@@ -504,9 +508,62 @@ body::after {
 
 /* Responsive scale */
 @media (min-width: 768px) {
-  .count-number { font-size: 5rem; min-width: 7rem; padding: 1.1rem 2rem; }
+  .count-number { font-size: 5.6rem; min-width: 8rem; padding: 1.2rem 2.2rem; }
   .countdown-wrapper { gap: 2.5rem; }
   .count-label { font-size: 1.05rem; }
 }
+
+/* Banner cuando comienza el evento */
+.event-started {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.event-started-inner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(212,175,55,0.98), rgba(226,188,205,0.95));
+  color: #2a1f10;
+  padding: 1.8rem 3.2rem;
+  border-radius: 22px;
+  font-size: 3.6rem;
+  font-weight: 900;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.38);
+  box-shadow: 0 18px 60px rgba(212,175,55,0.32);
+  transform: translateZ(0) scale(1);
+  animation: pulseBanner 2.4s ease-in-out infinite;
+}
+
+/* Removed rotating ::before border to keep layout simpler; pulse effect retained */
+
+.event-started-inner::after{
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+  transform: rotate(-25deg);
+  opacity: 0.65;
+  animation: shineSweep 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Banner animations */
+@keyframes pulseBanner{
+  0%{ transform: scale(1); box-shadow: 0 14px 44px rgba(212,175,55,0.28); }
+  50%{ transform: scale(1.02); box-shadow: 0 22px 72px rgba(212,175,55,0.36); }
+  100%{ transform: scale(1); box-shadow: 0 14px 44px rgba(212,175,55,0.28); }
+}
+
+@keyframes shineSweep{
+  0%{ left: -60%; opacity: 0 }
+  10%{ opacity: 0.6 }
+  50%{ left: 120%; opacity: 0.6 }
+  100%{ left: 120%; opacity: 0 }
+}
+
+/* rotateBorder removed - pulse retained */
 
 
