@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function getTimeLeft() {
-  const eventDate = new Date("2026-01-11T16:45:00");
+  const eventDate = new Date("2026-01-11T17:05:00");
   const now = new Date();
   const diff = eventDate.getTime() - now.getTime();
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
